@@ -49,7 +49,7 @@ int Console::GetWindowHeight() {
         case OPERATING_SYSTEM::WINDOWS:
 #ifdef WINDOWS_INCLUDED
             CONSOLE_SCREEN_BUFFER_INFO csbi;
-			GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+            GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
             height = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
             //delete &csbi;
 #endif
