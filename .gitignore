@@ -3,3 +3,4 @@
 cmake-build-debug/
 include/external
 _win_build/
+*.bat

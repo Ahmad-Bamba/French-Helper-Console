@@ -15,6 +15,10 @@
 
 Console* Console::s_instance = nullptr;
 
+Console::Console() {
+    m_inputs.fill("");
+}
+
 Console::~Console() {
     delete s_instance;
 }
@@ -85,8 +89,38 @@ int Console::GetWindowWidth() {
     return width;
 }
 
+void Console::Print(std::string x) {
+    std::cout << x;
+}
+
+void Console::PrintLn(std::string x, bool on_new, int lines) {
+    if(on_new)
+        std::cout << std::endl;
+    std::cout << x;
+    for(int i = 0; i < lines; i++)
+        std::cout << std::endl;
+}
+
+void Console::PrintLn(std::string x, int lines) {
+    std::cout << x;
+    for(int i = 0; i < lines; i++)
+        std::cout << std::endl;
+}
+
+void Console::GetInput(std::string &x) {
+    for(int i = 0; i < m_inputs.size() - 1; i++) {
+        m_inputs[i] = m_inputs[i + 1];
+    }
+    std::getline(std::cin, x);
+    m_inputs[m_inputs.size() - 1] = x;
+}
+
 Console* Console::GetInstance() {
     if(s_instance == nullptr)
         s_instance = new Console();
     return s_instance;
+}
+
+std::array<std::string, 20> Console::GetInputs() {
+    return m_inputs;
 }
