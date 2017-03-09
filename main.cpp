@@ -1,7 +1,8 @@
 #include "internal/InputHandler.h"
 
 int main() {
-    auto app = new InputHandler();
+    InputHandler* app;
+    app = new InputHandler(true);
     //main program loop
     while(app->GetStatus() == -1) {
         app->Run();
